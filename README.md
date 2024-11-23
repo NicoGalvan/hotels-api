@@ -1,25 +1,29 @@
-# Hotel Management API
+# **Hotel Management API**
 
-Este proyecto es una API RESTful construida con Laravel para gestionar hoteles, tipos de habitaciones, acomodaciones y más.
-
-## Base de datos 
-![image](https://github.com/user-attachments/assets/b5421731-92ca-48dc-a5f8-c4a89e6dd97d)
-
-
-## Requisitos previos
-
-Asegúrate de que tu entorno cumpla con los siguientes requisitos antes de comenzar:
-
-- [Laravel](https://laravel.com/docs) 10.x
-- PHP 8.1 o superior
-- Composer 2.x
-- PostgreSQL 12 o superior
-- [Node.js](https://nodejs.org/)
-- [Laragon](https://laragon.org/) o cualquier entorno de desarrollo local con soporte para PHP y PostgreSQL
+Este proyecto es una **API RESTful** desarrollada con **Laravel 10** para la gestión de hoteles, tipos de habitaciones, acomodaciones y más.
 
 ---
 
-## Configuración del proyecto
+## **📂 Modelo de base de datos**
+
+![Modelo de base de datos](https://github.com/user-attachments/assets/b5421731-92ca-48dc-a5f8-c4a89e6dd97d)
+
+---
+
+## **🛠️ Requisitos previos**
+
+Asegúrate de que tu entorno cumpla con los siguientes requisitos antes de comenzar:
+
+- **[Laravel](https://laravel.com/docs):** 10.x
+- **PHP:** 8.1 o superior
+- **[Composer](https://getcomposer.org/):** 2.x
+- **PostgreSQL:** 12 o superior
+- **[Node.js](https://nodejs.org/)**
+- **[Laragon](https://laragon.org/):** o cualquier entorno de desarrollo local compatible con PHP y PostgreSQL.
+
+---
+
+## **⚙️ Configuración del proyecto**
 
 Sigue estos pasos para configurar y ejecutar el proyecto localmente.
 
