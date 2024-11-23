@@ -56,4 +56,18 @@ class Hotel extends Model
 	{
 		return $this->hasMany(Room::class);
 	}
+
+	public function scopeFilterByName($query, $search)
+    {
+        if ($search) {
+            $query->where('name', 'ILIKE', "%{$search}%");
+        }
+    }
+
+    public function scopeFilterByCity($query, $cityId)
+    {
+        if ($cityId) {
+            $query->where('city_id', $cityId);
+        }
+    }
 }

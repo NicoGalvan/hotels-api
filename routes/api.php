@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\HotelController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RoomTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +23,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('hotels', HotelController::class);
+Route::apiResource('cities', CityController::class);
+Route::apiResource('room-types', RoomTypeController::class);
+Route::apiResource('rooms', RoomController::class);
