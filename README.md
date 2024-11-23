@@ -1,66 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Hotel Management API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es una API RESTful construida con Laravel para gestionar hoteles, tipos de habitaciones, acomodaciones y más.
 
-## About Laravel
+## Base de datos 
+![image](https://github.com/user-attachments/assets/b5421731-92ca-48dc-a5f8-c4a89e6dd97d)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requisitos previos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Asegúrate de que tu entorno cumpla con los siguientes requisitos antes de comenzar:
 
-## Learning Laravel
+- [Laravel](https://laravel.com/docs) 10.x
+- PHP 8.1 o superior
+- Composer 2.x
+- PostgreSQL 12 o superior
+- [Node.js](https://nodejs.org/)
+- [Laragon](https://laragon.org/) o cualquier entorno de desarrollo local con soporte para PHP y PostgreSQL
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Configuración del proyecto
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Sigue estos pasos para configurar y ejecutar el proyecto localmente.
 
-## Laravel Sponsors
+### 1. Clonar el repositorio
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/NicoGalvan/hotels-api.git
+cd hotels-api
+```
 
-### Premium Partners
+### 2. Instalar dependencias de PHP
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+composer install
+```
 
-## Contributing
+### 3. Crear el archivo .env
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Crea un archivo .env en la raíz del proyecto. Puedes duplicar el archivo de ejemplo:
 
-## Code of Conduct
+```bash
+cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Luego, actualiza las variables del archivo .env con la configuración de tu base de datos y otros valores necesarios:
 
-## Security Vulnerabilities
+```env
+APP_NAME=Hotel Management API
+APP_ENV=local
+APP_KEY=base64:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+APP_DEBUG=true
+APP_URL=http://localhost
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=hotels
+DB_USERNAME=postgres
+DB_PASSWORD=tu-contraseña
+```
+### 4. Generar la clave de la aplicación
+```bash
+php artisan key:generate
+```
 
-## License
+### 5. Configurar la base de datos
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Asegúrate de que PostgreSQL esté corriendo y de crear una base de datos llamada hotels:
+
+```sql
+CREATE DATABASE hotels;
+```
+### 6. Ejecutar migraciones y seeders
+
+Ejecuta las migraciones para crear las tablas y los seeders para poblar datos iniciales:
+```bash
+php artisan migrate --seed
+```
+
+### 7. Iniciar el servidor de desarrollo
+```bash
+php artisan serve
+```
+El proyecto estará disponible en http://localhost:8000.
+
+### 8. Probar la API
+Usa herramientas como Postman o cURL para probar la API. Por ejemplo:
+#### Listar hoteles
+```bash
+GET http://localhost:8000/api/hotels
+```
+#### Crear un hotel
+```bash
+POST http://localhost:8000/api/hotels
+Content-Type: application/json
+
+{
+    "name": "Hotel Example",
+    "address": "123 Example Street",
+    "city_id": 1,
+    "nit": "123456789",
+    "max_rooms": 100
+}
+```
+### Probar api desplegada
+Puedes utilizar la API sin ejecutar estos pasos mediante la API que se encuentra en línea en el siguiente dominio: https://hotels-api-production.up.railway.app/api/
+```bash
+GET https://hotels-api-production.up.railway.app/api/hotels
+```
+### contacto
+Si tienes preguntas o problemas, no dudes en abrir un issue en este repositorio o contactarme a nicogalvan1@hotmail.com.
